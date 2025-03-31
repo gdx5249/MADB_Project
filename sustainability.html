@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sustainability | Golf Course Futures</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-text h2 {
+      color: #2b2b2b;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .timeline-section {
+      background-color: #eaf5ec;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .timeline-title {
+      font-size: 2rem;
+      color: #2b2b2b;
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      z-index: 1;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #4CAF50;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 30px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-year {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      min-width: 80px;
+    }
+
+    .timeline-content {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: left;
+      max-width: 400px;
+    }
+
+    .numbers-section {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .numbers-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .number-box {
+      background-color: #eaf5ec;
+      border-radius: 12px;
+      padding: 30px;
+      width: 220px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .number-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #4CAF50;
+    }
+
+    .number-label {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #388E3C;
+    }
+
+    .menu-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+      align-items: center;
+    }
+
+    .menu-content a {
+      background-color: white;
+      color: #333;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .menu-content a:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    
+    .back-to-top-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    }
+
+    #backToTop {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+     .timeline-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .timeline-icons span {
+      font-size: 36px;
+      color: #4CAF50;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+  <div class="menu-content" id="menuContent">
+    <a href="homepage_1.html"><span style="font-size: 1.8rem;">🏠</span></a>
+    <a href="course_gallery.html">Course Gallery</a>
+    <a href="sustainability.html">Sustainability</a>
+    <a href="economics.html">Economics</a>
+    <a href="forum.html">Forum</a>
+  </div>
+
+  <section style="
+  text-align: center; 
+  padding: 60px 20px; 
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(240,240,240,0.8)),
+              url('https://i.postimg.cc/Y06B7XKg/pexels-fox-58267-212324.jpg');
+  background-size: cover;
+  background-position: center;
+">
+  <p style="color: #4CAF50; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px;">OUR MISSION</p>
+  <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Sustainability in Golf Course Design</h2>
+  <p style="max-width: 800px; margin: auto; color: #555;">Discover how golf courses evolve with nature. From early awareness to global certification, sustainability is reshaping the future of golf.</p>
+  <div style="width: 60px; height: 3px; background-color: #4CAF50; margin: 20px auto 0 auto; border-radius: 2px;"></div>
+</section>
+
+  
+   <section class="numbers-section">
+    <h2 class="timeline-title">Sustainability Impact in Numbers</h2>
+    <div class="numbers-grid">
+      <div class="number-box">
+        <div class="number-value">12,450+</div>
+        <div class="number-label">Certified Green Golf Courses</div>
+      </div>
+      <div class="number-box">
+        <div class="number-value">34%</div>
+        <div class="number-label">Water Use Reduction Since 2000</div>
+      </div>
+      <div class="number-box">
+        <div class="number-value">70+</div>
+        <div class="number-label">Countries Participating in Green Golf</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background-color: #ffffff; padding: 40px 20px; text-align: center;">
+   <p style="max-width: 700px; margin: auto; color: #555; margin-bottom: 30px;">
+    Over 70 countries have adopted sustainable golf initiatives, shaping a greener future across the globe.
+  </p>
+  <img src="https://i.postimg.cc/85h66r2G/sustainable-golf-course.png" alt="Green World Map" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</section>
+
+
+  <section class="timeline-section">
+    <h2 class="timeline-title">Evolution of Sustainable Golf Course Design</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1960s</div>
+        <div class="timeline-content">
+          <h3>Early Awareness</h3>
+          <img src="https://i.postimg.cc/ZnQ4Yww5/silent-spring.jpg" alt="Eco Awareness" style="width:100%; border-radius:10px; margin-top:10px;">
+          <p>Rachel Carson's groundbreaking book, "Silent Spring", has sparked a global environmental movement. Not only did it reveal the dangers of chemical pollution, but it also made some golf practitioners aware of the potential environmental problems of chemical use and began to try natural methods to regulate lawns.</p>
+          <a href="https://medium.com/daily-wavelength/silent-spring-how-this-book-sparked-an-environmental-movement-4699b58d1fb0" target="_blank" style="display:inline-block; margin-top:10px; background:#4CAF50; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">Learn More</a>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1980s</div>
+        <div class="timeline-content">
+          <h3>Pre-Conservation</h3>
+          <p>The United States Golf Association (USGA) gradually developed the "Environmental Responsibility Guidelines" in the late 1980s, promoting structural thinking on water resources and conservation management, laying the foundation for environmental transformation in the 1990s</p>
+          <a href="https://archive.constantcontact.com/fs003/1103157499740/archive/1103261984980.html" target="_blank" style="display:inline-block; margin-top:10px; background:#4CAF50; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">Learn More</a>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2005</div>
+        <div class="timeline-content">
+          <h3>Eco-Certification Movement</h3>
+          <img src="https://i.postimg.cc/yYJ7pzNg/before-after.jpg" alt="Eco Awareness" style="width:100%; border-radius:10px; margin-top:10px;">
+          <p>At a critical time when the global environment is facing challenges, an increasing number of foundations are committed to golf and sustainable development actions, and have a positive impact on the environment and communities around the world. The GEO Foundation for Sustainable Golf has carried out a series of closely related work.</p>
+          <a href="https://sustainable.golf/courses/" target="_blank" style="display:inline-block; margin-top:10px; background:#4CAF50; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">Learn More</a>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3>The Invention of AESIS System</h3>
+          <p>Researchers have developed an agro-environmental sustainability information system (AESIS) by utilizing a set of indicators suitable for evaluating different dimensions of sustainability (physical, ecological, production, and social), which helps to evaluate the agricultural environment of golf courses correctly.</p>
+          <a href="https://www.sciencedirect.com/science/article/pii/S1125471824005838" target="_blank" style="display:inline-block; margin-top:10px; background:#4CAF50; color:white; padding:8px 16px; border-radius:6px; text-decoration:none;">Learn More</a>
+        </div>
+       </div>
+       <div style="text-align: center; margin-top: 40px; font-size: 30px; color: #4CAF50;">
+         <span style="margin: 0 15px;">🌿</span>
+         <span style="margin: 0 15px;">♻️</span>
+         <span style="margin: 0 15px;">🌎</span>
+         <span style="margin: 0 15px;">⛳️</span>
+       </div>
+       </div>
+  </section>
+
+  <section style="background-color: #f8fdf8; padding: 60px 20px; text-align: center;">
+  <h2 style="font-size: 2rem; color: #2b2b2b; margin-bottom: 20px;">Further Reading</h2>
+  <p style="max-width: 700px; margin: auto; color: #555; margin-bottom: 30px;">
+    Explore more about sustainable practices in golf and environmental innovation from reputable sources:
+  </p>
+  <ul style="list-style: none; padding: 0; max-width: 800px; margin: auto; text-align: left;">
+    <li style="margin-bottom: 15px;">
+      <a href="https://www.usga.org/content/usga/home-page/course-care/green-section-record.html" target="_blank" style="color: #4CAF50; text-decoration: underline;">
+        🌱 USGA Green Section – Environmental Articles & Guidelines</a>
+    </li>
+    <li style="margin-bottom: 15px;">
+      <a href="https://golfsustainable.com/en/golf-sustainable/" target="_blank" style="color: #4CAF50; text-decoration: underline;">
+        ♻️ Golf Sustainable – News and background information on sustainability in golf</a>
+    </li>
+    <li style="margin-bottom: 15px;">
+      <a href="https://www.gcsaa.org/environment" target="_blank" style="color: #4CAF50; text-decoration: underline;">
+        🌍 GCSAA – Environmental Best Practices for Golf Courses</a>
+    </li>
+    <li style="margin-bottom: 15px;">
+      <a href="https://www.mdpi.com/2071-1050/12/9/3616" target="_blank" style="color: #4CAF50; text-decoration: underline;">
+        📊 Scientific Article – Golf Tourism and Sustainability: Content Analysis and Directions for Future Research </a>
+    </li>
+  </ul>
+</section>
+
+   <!-- Back to Top Button -->
+  <div class="back-to-top-container">
+  <button id="backToTop" onclick="scrollToTop()">↑</button>
+  </div>
+
+  <footer>
+    <p><a href="contact.html" style="color: #ccc; text-decoration: underline;">Contact Us | References</a></p>
+    <p>&copy; 2025 Golf Course Futures</p>
+  </footer>
+
+  <script>
+    const menu = document.getElementById("menuContent");
+    function toggleMenu() {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+    
+    
+    const backToTop = document.getElementById("backToTop");
+    window.onscroll = () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+  </script>
+</body>
+</html>

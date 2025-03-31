@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Gallery | Golf Course Futures</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+     .hero {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-btn {
+  z-index: 1;
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.postimg.cc/L6qX77DW/course-design.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.7);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.hero h1, .hero video {
+  z-index: 1;
+}
+
+.hero-btn:hover {
+  background-color: #388E3C;
+}
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 90%;
+      max-width: 1000px;
+      overflow: hidden;
+    }
+
+    .slider img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .slider-controls {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .slider-controls button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Card Section */
+    .card-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      background-color: #f9f9f9;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 300px;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 20px 0 10px;
+      color: #2b2b2b;
+    }
+
+    .card p {
+      padding: 0 15px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .card button {
+      margin: 15px 0 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #388E3C;
+    }
+
+    /* Floating Circle Menu */
+    .menu-btn {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: #388E3C;
+    }
+
+    .menu-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+      align-items: center;
+    }
+
+    .menu-content a {
+      background-color: white;
+      color: #333;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .menu-content a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .back-to-top-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+
+    #backToTop {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+  <div class="menu-content" id="menuContent">
+    <a href="homepage_1.html"><span style="font-size: 1.8rem;">🏠</span></a>
+    <a href="course_gallery.html">Course Gallery</a>
+    <a href="sustainability.html">Sustainability</a>
+    <a href="economics.html">Economics</a>
+    <a href="forum.html">Forum</a>
+  </div>
+
+<section style="
+  text-align: center; 
+  padding: 60px 20px; 
+  background: linear-gradient(rgba(255,255,255,0.3), rgba(240,240,240,0.7)),
+              url('https://i.postimg.cc/vHfZvn3g/pexels-pixabay-531756.jpg');
+  background-size: cover;
+  background-position: center;
+">
+  <p style="color: #4CAF50; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px;">THE HIGHLIGHTS</p>
+  <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Signature Golf Courses Gallery</h2>
+  <p style="max-width: 800px; margin: auto; color: #555;">A curated selection of the most prestigious golf courses across the globe. Discover their unique charm, design philosophy, and enduring legacy.</p>
+  <div style="width: 60px; height: 3px; background-color: #4CAF50; margin: 20px auto 0 auto; border-radius: 2px;"></div>
+</section>
+
+  <section class="card-section">
+    <div class="card">
+      <img src="https://i.postimg.cc/JhqFTCq9/augusta-national.jpg" alt="Augusta National Golf Club">
+      <h3>Augusta National Golf Club</h3>
+      <p>Known for its breathtaking azaleas and pristine fairways, Augusta is the home of the Masters Tournament.</p>
+      <button onclick="window.open('https://www.top100golfcourses.com/golf-course/augusta-national')">Learn More</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/15cnWy2m/st-andrews.jpg" alt="St Andrews Old Course">
+      <h3>St Andrews Old Course</h3>
+      <p>Known as the birthplace of golf, St Andrews Old Course offers a timeless layout shaped by centuries of history and tradition.</p>
+      <button onclick="window.open('https://www.top100golfcourses.com/golf-course/st-andrews-eden')">Learn More</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/fTc13ddz/royal-melbourne.jpg" alt="Royal Melbourne">
+      <h3>Royal Melbourne</h3>
+      <p>A masterpiece of strategic design, Royal Melbourne is renowned for its fast greens and challenging bunkers set in Australia's Sandbelt.</p>
+      <button onclick="window.open('https://www.top100golfcourses.com/golf-course/royal-melbourne-east')">Learn More</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/BnHZnp5m/hirono.jpg" alt="Hirono Golf Club">
+      <h3>Hirono Golf Club</h3>
+      <p>Japan's most prestigious course, Hirono blends natural beauty with masterful design, often hailed as the finest in Asia.</p>
+      <button onclick="window.open('https://www.top100golfcourses.com/golf-course/hirono')">Learn More</button>
+    </div>
+</section>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <h1 style="font-size: 2.5rem; margin-bottom: 20px;">How is the stadium designed?</h1>
+  <video controls style="width: 70%; height: 70%; object-fit: cover; margin-top: 10px;">
+    <source src="golf_design_video.mp4" type="video/mp4">
+  </video>
+  <p style="z-index: 1; margin-top: 15px; color: white; font-size: 1.1rem;">
+    What is golf course designer?
+    <button class="hero-btn" onclick="window.open('https://theartcareerproject.com/careers/golf-course-design/#whatis')">Click here</button>
+  </p>
+</section>
+
+  <footer>
+    <p><a href="contact.html" style="color: #ccc; text-decoration: underline;">Contact Us | References</a></p>
+    <p>&copy; 2025 Golf Course Futures</p>
+  </footer>
+    
+  <script>
+    const menu = document.getElementById("menuContent");
+    function toggleMenu() {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slider img");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? "block" : "none";
+      });
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    showSlide(currentIndex);
+  </script>
+</body>
+</html>

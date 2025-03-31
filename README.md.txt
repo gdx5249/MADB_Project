@@ -1,4 +1,3 @@
-
 # Golf Course Futures MADB Project
 
 ## 🌿 Project Overview

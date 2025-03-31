@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golf Course Futures</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section with Slideshow */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    .slide {
+      position: absolute;
+      top: 10%;
+      left: 10;
+      width: 100%;
+      height: 80%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .hero button {
+      position: relative;
+      z-index: 2;
+      margin-top: 20px;
+      padding: 20px 40px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #388E3C;
+      transform: scale(1.15);
+    }
+
+    /* Intro Section */
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .intro img {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 12px;
+      margin: 20px;
+    }
+
+    .intro-text {
+      max-width: 600px;
+      margin: 30px;
+    }
+
+    .intro-text h2 {
+      color: #2b2b2b;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* Floating Circle Menu */
+    .menu-btn {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+  .menu-btn:hover {
+  background-color: #388E3C;
+}
+
+    .menu-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+      align-items: center;
+    }
+
+    .menu-content a {
+      background-color: white;
+      color: #333;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .menu-content a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .back-to-top-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    }
+
+    #backToTop {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+     </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="slide active" style="background-image: url('https://i.postimg.cc/bNwDkfBc/golf-portfolio1-7.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.postimg.cc/SNZx34MW/pexels-tom-piotrowski-754800-1608383.jpg.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.postimg.cc/1RKM1VtL/pexels-tom-jackson-1238161-2891910.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.postimg.cc/mkjgbf6W/pexels-mikhail-nilov-9207201.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.postimg.cc/hjFjs076/pexels-cottonbro-6256832.jpg');"></div>
+    <div class="slide" style="background-image: url('https://i.postimg.cc/V6mMK4j5/pexels-elevate-digital-784230-1647919.jpg');"></div>
+    <h1>Designing Tomorrow’s Greens: When Golf Meets Nature</h1>
+    <button onclick="document.querySelector('.intro').scrollIntoView({ behavior: 'smooth' });">Explore</button>
+
+  </section>
+
+  <!-- Intro Section -->
+  <section class="intro">
+  <img src="https://i.postimg.cc/Njxr5Rhc/pexels-robert-stokoe-105922-717637.jpg" alt="Golf design concept">
+  <div class="intro-text">
+    <h2>Welcome to the "Garden of Eden" of Golf Course Planning and Design</h2>
+    <p>
+      On the green course, every grass, every sand pit, and every water barrier contain the ingenuity and vision of the designer. Golf course design is not only the art of layout, but also the combination of technology and creativity. Whether you're a designer, course manager, or golf enthusiast, there's inspiration and insight for you. Let's embark on a journey of design, creativity and collaboration!
+    </p>
+  </div>
+</section>
+
+<section class="intro">
+  <img src="https://i.postimg.cc/rFVTq49W/pexels-vision-plug-310264943-16956300.jpg" alt="Course Gallery Preview" style="max-width: 400px;">
+  <div class="intro-text">
+    <h2>Course Gallery</h2>
+    <p>
+      Open the gallery of the world's top 100 golf courses to experience a pilgrimage journey. The design of well-known golf courses may further increase your interest in golf? Or perhaps it sparked your interest in design? Or would you like to personally visit these courses?
+    </p>
+    <button onclick="window.location.href='course_gallery.html'" style="margin-top: 15px; padding: 10px 24px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Enter Gallery</button>
+  </div>
+</section>
+
+<section class="intro" style="flex-direction: column; text-align: center;">
+  <h2 style="margin-bottom: 40px; font-size: 2rem; color: #2b2b2b;">As a professional elite, you may also like</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+    <div style="max-width: 300px; text-align: center;">
+      <div style="font-size: 50px; color: #4CAF50; margin-bottom: 10px;">🌿</div>
+      <h3 style="color: #2b2b2b; margin-bottom: 10px;">Sustainability</h3>
+      <p style="color: #444; font-size: 1rem; line-height: 1.5;">
+        Learn how modern golf course design integrates eco-friendly innovation with long-term landscape stewardship.
+      </p>
+      <button onclick="window.location.href='sustainability.html'" style="margin-top: 15px; padding: 10px 24px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Explore</button>
+    </div>
+    <div style="max-width: 300px; text-align: center;">
+      <div style="font-size: 50px; color: #4CAF50; margin-bottom: 10px;">💰</div>
+      <h3 style="color: #2b2b2b; margin-bottom: 10px;">Economics</h3>
+      <p style="color: #444; font-size: 1rem; line-height: 1.5;">
+        Discover how smart course planning maximizes economic efficiency and long-term financial sustainability.
+      </p>
+      <button onclick="window.location.href='economics.html'" style="margin-top: 15px; padding: 10px 24px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Explore</button>
+    </div>
+  </div>
+</section>
+
+<section style="position: relative; height: 60vh; background-image: url('https://i.postimg.cc/rpfdVTBC/pexels-henri-mathieu-8344905.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); padding: 0 20px;">
+  <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Friendly Forum</h2>
+  <p style="font-size: 1.1rem; max-width: 700px; margin-bottom: 30px;">
+    The Forum is a space for professionals, designers, and enthusiasts to share ideas, ask questions, and grow the future of golf course planning together.
+  </p>
+  <button onclick="window.location.href='forum.html'" style="padding: 12px 30px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s ease;">
+    Join now
+  </button>
+</section>
+
+
+<div class="menu-btn" onclick="toggleMenu()">Menu</div>
+  <div class="menu-content" id="menuContent">
+    <a href="homepage_1.html"><span style="font-size: 1.8rem;">🏠</span></a>
+    <a href="course_gallery.html">Course Gallery</a>
+    <a href="sustainability.html">Sustainability</a>
+    <a href="economics.html">Economics</a>
+    <a href="forum.html">Forum</a>
+  </div>
+
+   <!-- Back to Top Button -->
+  <div class="back-to-top-container">
+  <button id="backToTop" onclick="scrollToTop()">↑</button>
+  </div>
+
+
+ <!-- Footer -->
+  <footer id="contact">
+    <p><a href="contact.html" style="color: #ccc; text-decoration: underline;">Contact Us | References</a></p>
+    <p>&copy; 2025 Golf Course Futures</p>
+  </footer>
+
+  <script>
+    const menu = document.getElementById("menuContent");
+    function toggleMenu() {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    const backToTop = document.getElementById("backToTop");
+    window.onscroll = () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Slideshow logic
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 3000);
+  </script>
+</body>
+</html>
